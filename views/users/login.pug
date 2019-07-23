@@ -1,0 +1,14 @@
+extends ../layout
+block header
+    link(rel='stylesheet', href='/css/login.css')
+block content
+    .container.border.login-container.col-sm-12.col-md-8.col-lg-6
+        form.form-signin(action='/users/login', method='POST')
+            .row.justify-content-center
+                    h2 Login
+            .row.justify-content-center
+                    input#inputUsername.form-control.mt-3(name='username' type='text', placeholder='Username', autofocus='')
+            .row.justify-content-center
+                    input#inputPassword.form-control.mb-3.mt-3(name='password' type='password', placeholder='Password')
+            .row.justify-content-center.mt-4
+                    button.btn.btn-dark(type='submit' style='width:100%') Login

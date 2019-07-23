@@ -1,0 +1,26 @@
+extends ../layout
+block header
+    link(rel='stylesheet', href='/css/login.css')
+block content
+    script(src='/js/list.js')
+    .container
+        #table-place
+        //- table.table
+            thead.thead-light
+                tr
+                    th(scope='col') #
+                    th(scope='col') Username
+                    th(scope='col') Fullname
+                    th(scope='col') Group
+                    th(scope='col') Last login date
+                    th(scope='col') Remove
+            tbody
+                each user, i in users
+                    tr
+                        th(scope='row')=i + 1
+                        td=user.username
+                        td=user.fullname
+                        td=user.group
+                        td=moment(user.lastLoginDate).format("YYYY.MM.DD HH:MM:SS")
+                        td
+                            a.delete-button(id=user._id style="cursor: pointer") ✖

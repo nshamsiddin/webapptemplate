@@ -1,0 +1,16 @@
+extends ../layout
+block header
+    link(rel='stylesheet', href='/css/login.css')
+block content
+    .container.border.mt-5.login-container
+        form.form-signin.mt-3(action='/users/add', method='POST')
+            .row.justify-content-md-center.mb-2
+                h2 Add
+            .row.justify-content-md-center
+                input#inputUsername.form-control.mt-3(name='username' type='text', placeholder='Username', autofocus='')
+            .row.justify-content-md-center
+                input#inputFullname.form-control.mt-3(name='fullname' type='text', placeholder='Fullname', autofocus='')
+            .row.justify-content-md-center
+                input#inputGroup.form-control.mb-3.mt-3(name='group' type='text', placeholder='Group', required='', autofocus='')
+            .row.justify-content-md-center.mt-3
+                button.btn.btn-info(type='submit' style='width:100%') Add user
