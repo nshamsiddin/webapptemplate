@@ -16,16 +16,14 @@ router.post('/login', (req, res, next) => {
     }
 
     if (errors.length > 0) {
-        errors.forEach((error) => {
-            req.flash('danger', error)
-        })
+        errors.forEach((error) => { req.flash('danger', error) })
         res.render('users/login', { username })
     }
 
     else {
         passport.authenticate('local', {
             successRedirect: '/',
-            successFlash: 'You are now logged in',
+            successFlash: true,
             failureRedirect: '/users/login',
             failureFlash: true
         })(req, res, next)

@@ -13,7 +13,6 @@ const passport = require('passport')
 
 // Init app
 const app = express()
-require('./initdb')
 
 // Template engine
 app.set('views', path.join(__dirname, 'views'))
