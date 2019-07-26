@@ -54,6 +54,7 @@ app.get('*', (req, res, next) => {
 app.locals.app_title = config.app.title
 
 // Routes
+app.use('/api', require('./routes/api'))
 app.use('/', require('./routes/index'))
 app.use('/users', require('./routes/users'))
 app.use('/reports', require('./routes/reports'))
