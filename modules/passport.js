@@ -6,7 +6,7 @@ const logger = require('./logger')
 
 // const User = require('../models/user')
 const User = require('../models/user')
-const Users = require('../controllers/users')
+const Users = require('../controllers/userController')
 
 let ad = new ActiveDirectory({
     url: config.ldap.url,

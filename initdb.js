@@ -1,6 +1,7 @@
 const logger = require('./modules/logger')
 const config = require('./config')
-const Users = require('./controllers/users')
+const Users = require('./controllers/userController')
+const ReportTypes = require('./controllers/reportTypeController')
 
 init()
 
@@ -10,5 +11,4 @@ async function init() {
         await Users.create({ username: config.admin.username, group: config.admin.role })
         logger.info('Database initialization is done')
     }
-
 }

@@ -1,13 +1,5 @@
 extends layout
 block header
 block content
-    form(action='/reports/form', method='GET')
+    a(href='/reports/request')
         button.btn.btn-info.btn-lg.btn-block.mt-3 Request
-    //- form#request-report-form(action="/requests/add" method="POST")
-        .form-row
-            .col-3
-                input#date-input.form-control(type="date", name="date")
-            .col-3
-                button.btn.btn-info.get-button(style="width:100%") Get report
-            .col-3
-                button.btn.btn-info.download-button(style="width:100%" disabled) Download
