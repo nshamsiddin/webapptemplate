@@ -1,0 +1,18 @@
+.form-container{
+    margin-top: 3%;
+    padding:4%; 
+    border-radius:5px; 
+    box-shadow:2px 2px 30px rgba(0,0,0,.2)
+}
+
+.custom-input{
+    background-color:#f8f9fa;
+    border-color: #f8f9fa;
+    color:#999;
+}
+
+.custom-input:hover{
+    color: #999;
+    background-color:#e2e6ea;
+    border-color: #dae0e5;
+}

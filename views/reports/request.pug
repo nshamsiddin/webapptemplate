@@ -1,46 +1,49 @@
 extends ../layout
 block header
-    link(rel='stylesheet', href='https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/css/bootstrap-select.min.css')
-    link(rel='stylesheet', href='../css/requests.css')
+    link(rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/css/bootstrap-select.min.css')
+    link(rel='stylesheet' href='../css/form.css')
     script(src='https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/js/bootstrap-select.min.js')
     script(src='../js/request.js')
-
+    script(type='text/javascript', src='https://cdn.jsdelivr.net/momentjs/latest/moment.min.js')
+    script(type='text/javascript', src='https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js')
+    link(rel='stylesheet', type='text/css', href='https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css')
 block content
-    .container.border#form-container(style='width:50%')
+    .container.form-container.col-sm-12.col-md-8.col-lg-6
         form.mt-3(method='POST')
             .row.justify-content-center
                 h2 Request report
             .form-row
-                .form-group.col-md-12
+                .form-group.col-12
                     label(for='type') Type
-                    select#type.form-control(name='type', data-actions-box='true')
+                    select.selectpicker.form-control#type(title='Report type' data-actions-box='true' name='type')
                         each report in reports
                             option(value=report.id) #{report.name}
             .form-row
-                .form-group.col-md-6
-                    label(for='date-input') From
-                    input#date-input.form-control(type='date', name='date')
-                .form-group.col-md-6
-                    label(for='date2-input') To
-                    input#date2-input.form-control(type='date', name='date2')
+                .form-group.col-12
+                    label(for='date-input') Dates
+                    input#date-input.form-control.custom-input(type='text' name='daterange')
             .form-row
-                .form-group.col-md-12
-                    label(for='bases') Bases
-                    select.selectpicker.form-control(multiple title='All base stations' data-actions-box='true' name='bases')
-                        each base in bases
+                .form-group.col-12
+                    label(for='bases') Base stations
+                    select.selectpicker.form-control#bases(multiple title='All base stations' data-actions-box='true' name='bases', data-live-search='true')
+                        //- each base in bases
                             option(value=base.bs_id) #{base.bs_id}
             .form-row
-                .form-group.col-md-12
-                    label(for='bases') Markets
-                    select.selectpicker.form-control(multiple title='All markets' data-actions-box='true' name='markets')
-                        each market in markets
+                .form-group.col-12
+                    label(for='markets') Markets
+                    select.selectpicker.form-control#markets(multiple title='All markets' data-actions-box='true' name='markets')
+                        //- each market in markets
                             option(value=market) #{market}
             .form-row
-                .form-group.col-md-12
+                .form-group.col-12
                     label(for='reasons') Reasons
-                    select.selectpicker.form-control(multiple title='All reason codes' data-actions-box='true' name='reasons')
-                        each reason in reasons
+                    select.selectpicker.form-control#reasons(multiple title='All reason codes' data-actions-box='true' name='reasons', data-live-search='true')
+                        //- each reason in reasons
                             option(value=reason.disconnect_reason_code data-subtext=reason.disconnect_reason_desc) #{reason.disconnect_reason_code}
-            .form-row.mt-3
-                .form-group.col-md-12
-                    button.btn.btn-info.get-button(type='submit', style='width:100%') Get report
+            .form-row
+                .form-group.col-12
+                    label(for='name') Name
+                    input.form-control.custom-input#name(type='text' name='name')
+            .form-row.mt-4
+                .form-group.col-12
+                    button.btn.btn-info.get-button(type='submit' style='width:100%') Get report

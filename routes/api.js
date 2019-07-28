@@ -7,11 +7,24 @@ const Reason = require('../controllers/reasonController')
 
 router.get('/get/report-types', (req, res) => ReportType.getAll().then((reportTypes) => res.send(reportTypes)))
 router.get('/get/reasons', (req, res) => Reason.getAll().then((reasons) => res.send(reasons)))
-router.get('/get/bases', (req, res) => Bases.getAll().then((bases) => res.send(bases)))
-router.get('/get/markets', (req, res) => Base.getAll()
-    .then((bases) => res.send([...new Set(bases
-        .filter(base => base.market_key !== null && base.market_key !== undefined)
-        .map((base) => base.market_key))
-    ])))
+router.get('/get/bases', (req, res) => Base.getDistinctByBsId().then((bases) => res.send(bases)))
+router.get('/get/markets', (req, res) => Base.getMarkets().then(markets => res.send(markets)))
+
+function uniqifyBy(array, param) {
+    const result = []
+    array.forEach(p => {
+        if (!exists(result, p, param))
+            result.push(p)
+    })
+    return result
+}
+
+function exists(array, element, param) {
+    for (let p of array)
+        if (p[param] == element[param])
+            return true
+    return false
+}
+
 
 module.exports = router

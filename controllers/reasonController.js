@@ -1,7 +1,7 @@
 const logger = require('../modules/logger')
 const Reason = require('../models/reason')
 
-exports.getById = id => Reason.findById({ id })
+exports.getById = id => Reason.findById(id)
     .catch((err) => logger.error(err.message))
 
 exports.getByCode = code => Reason.findById({ disconnect_reason_code: code })
