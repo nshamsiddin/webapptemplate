@@ -15,7 +15,7 @@ block content
             .form-row
                 .form-group.col-12
                     label(for='type') Type
-                    select.selectpicker.form-control#type(title='Report type' data-actions-box='true' name='type')
+                    select.selectpicker.form-control#type(title='Report type' data-actions-box='true' name='type' required)
                         each report in reports
                             option(value=report.id) #{report.name}
             .form-row

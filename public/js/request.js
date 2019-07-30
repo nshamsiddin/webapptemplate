@@ -12,10 +12,9 @@ $(document).ready(() => {
         },
         maxDate: moment(),
         locale: { format: 'DD-MM-YYYY' }
-
     }, (start, end, label) => {
         const filename = start.format('YYYYMMDD') + '-' + end.format('YYYYMMDD')
-        $('#name').val(`${filename}.xlsx`)
+        setfilename(filename)
     })
 
     elements.forEach((element) => {
@@ -25,8 +24,6 @@ $(document).ready(() => {
                 alert('Something went wrong, please reload the page')
         })
     })
-
-
 })
 
 const elements = [
@@ -34,6 +31,10 @@ const elements = [
     { id: 'markets', value: 'market_key', name: 'market_key', subtext: 'region' },
     { id: 'reasons', value: 'disconnect_reason_code', name: 'disconnect_reason_code', subtext: 'description_eng' }
 ]
+
+function setfilename(filename) {
+    $('#name').val(`${filename}.xlsx`)
+}
 
 function add_options(element, response) {
     const options = []
