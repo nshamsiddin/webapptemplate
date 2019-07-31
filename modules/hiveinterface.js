@@ -16,7 +16,7 @@ exports.query = (query, name) => axios.post(config.hive.api, {
     filePath: path.resolve(`${__dirname}/../test.xlsx`)
     // filePath: path.resolve(`${__dirname}/${folder}/${name}.xlsx`)
 }, (err, result) => {
-    console.log(path.resolve(`${__dirname}/../test.xlsx`))
+    console.log(path.resolve(`${__dirname}/../${name}`))
     console.log(result)
 })
     .catch((err) => logger.error(path.resolve(`${__dirname}/test.xlsx`)))
