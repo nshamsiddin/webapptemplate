@@ -2,6 +2,7 @@ const config = require('../config')
 const logger = require('./logger')
 
 const axios = require('axios')
+const path = require('path')
 
 const url = config.hive.db_url
 const username = config.hive.username
@@ -12,6 +13,6 @@ let reports_path = __dirname + '/../reports/'
 
 exports.query = (query, name) => axios.post(config.hive.api, {
     query, url, username, password,
-    filePath: `${__dirname}/${folder}/${name}.xlsx`
+    filePath: path.resolve(`${__dirname}/${folder}/${name}.xlsx`)
 })
-    .catch((err) => logger.error(`${__dirname}/../${folder}/${name}.xlsx`))
+    .catch((err) => logger.error(`${__dirname}/../${folder}/${name}`))
