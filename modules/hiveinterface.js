@@ -15,4 +15,4 @@ exports.query = (query, name) => axios.post(config.hive.api, {
     query, url, username, password,
     filePath: path.resolve(`${__dirname}/${folder}/${name}.xlsx`)
 })
-    .catch((err) => logger.error(`${__dirname}/../${folder}/${name}`))
+    .catch((err) => logger.error(`${__dirname}/${name}`))
