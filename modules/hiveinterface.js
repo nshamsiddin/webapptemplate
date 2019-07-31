@@ -10,11 +10,7 @@ const password = config.hive.password
 const folder = config.app.folder
 
 let reports_path = path.resolve(__dirname + '/../reports/')
-logger.info(reports_path)
 
-
-exports.query = (query, name) => axios.post(config.hive.api, {
-    query, url, username, password,
-    filePath: `${reports_path}/${name}`
-})
-    .catch((err) => logger.error(`${reports_path}/${name}`))
+exports.query = (query, name) => axios
+    .post(config.hive.api, { query, url, username, password, filePath: `${reports_path}/${name}` })
+    .catch((err) => logger.error(err.message))

@@ -10,9 +10,8 @@ exports.get = reportTypename => ReportType.findOne({ reportTypename })
 exports.getAll = () => ReportType.find()
     .catch((err) => logger.error(err.message))
 
-exports.create = reportType => new ReportType(reportType)
+exports.create = reportType => new ReportType({ reportType })
     .save()
-    .then(() => logger.info('ReportType created'))
     .catch((err) => logger.error(err.message))
 
 exports.delete = _id => ReportType.deleteOne({ _id })
