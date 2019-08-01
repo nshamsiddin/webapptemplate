@@ -25,14 +25,19 @@ $(document).ready(() => {
         })
     })
 
+
     $('.filename-changer').on('change', () => {
-        let username = $('#username').val()
-        let type = $('#type').find(":selected").text().split(' ').join('-')
-        let reasons = $('#reasons').val().toString().split(',').join('|')
-        let daterange = $('#date-input').val().toString().split(' - ').join('_')
-        $('#name').val(`${username}_${type}[${reasons}][${daterange}].xlsx`)
+        setfilename()
     })
 })
+
+function setfilename() {
+    let username = $('#username').val()
+    let type = $('#type').find(":selected").text().split(' ').join('-')
+    let reasons = $('#reasons').val().toString().split(',').join('|')
+    let daterange = $('#date-input').val().toString().split(' - ').join('_')
+    $('#name').val(`${username}_${type}[${reasons}][${daterange}]`)
+}
 
 const elements = [
     // { id: 'bases', value: 'bs_id', name: 'bs_id', subtext: 'region' },
@@ -46,6 +51,7 @@ function add_options(element, response) {
     response.forEach(p => {
         const option = new Option(p[element.value], p[element.name])
         $(option).attr('data-subtext', p[element.subtext])
+        $(option).attr('selected', true)
         options.push(option)
     })
     $(`select[id="${element.id}"]`)

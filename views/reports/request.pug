@@ -8,7 +8,7 @@ block header
     script(type='text/javascript', src='https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js')
     link(rel='stylesheet', type='text/css', href='https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css')
 block content
-    .container.form-container.col-sm-12.col-md-8.col-lg-6
+    .container.form-container.col-sm-12.col-md-10.col-lg-8
         form.mt-3(method='POST')
             .row.justify-content-center
                 h2 Request report
@@ -37,13 +37,19 @@ block content
             .form-row
                 .form-group.col-12
                     label(for='reasons') Reasons
-                    select.selectpicker.form-control#reasons.filename-changer(multiple title='All reason codes' data-actions-box='true' name='reasons', data-live-search='true')
+                    select.selectpicker.form-control#reasons.filename-changer(multiple title='All reason codes' data-actions-box='true' name='reasons' data-selected-text-format="count")
                         //- each reason in reasons
                             option(value=reason.disconnect_reason_code data-subtext=reason.disconnect_reason_desc) #{reason.disconnect_reason_code}
-            .form-row
+            //- .form-row
                 .form-group.col-12
                     label(for='name') Name
                     input.form-control.custom-input#name(type='text' name='name')
+            .form-row.mt-4
+                .input-group.col-12
+                    input.form-control.custom-input#name(type='text' placeholder='Filename' name='name' )
+                    .input-group-append
+                        span.input-group-text.custom-input .xlsx
+
             input.form-control.custom-input#username(type='text' name='username' value=user.username hidden)
             .form-row.mt-4
                 .form-group.col-12

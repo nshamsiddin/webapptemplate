@@ -10,6 +10,9 @@ exports.getByCode = code => Reason.findById({ disconnect_reason_code: code })
 exports.getAll = () => Reason.find()
     .catch((err) => logger.error(err.message))
 
+exports.getVisible = () => Reason.find({ visible: true })
+    .catch((err) => logger.error(err.message))
+
 exports.create = reason => new Reason(reason)
     .save()
     .then(() => logger.info('Reason inserted'))
