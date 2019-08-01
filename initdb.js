@@ -2,6 +2,8 @@ const logger = require('./modules/logger')
 const config = require('./config')
 const Users = require('./controllers/userController')
 const ReportTypes = require('./controllers/reportTypeController')
+const Reasons = require('./controllers/reasonController')
+
 
 init()
 

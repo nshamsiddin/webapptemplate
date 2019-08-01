@@ -14,7 +14,7 @@ $(document).ready(() => {
         locale: { format: 'DD-MM-YYYY' }
     }, (start, end, label) => {
         const filename = start.format('YYYYMMDD') + '-' + end.format('YYYYMMDD')
-        setfilename(filename)
+        // setfilename(filename)
     })
 
     elements.forEach((element) => {
@@ -24,6 +24,14 @@ $(document).ready(() => {
                 alert('Something went wrong, please reload the page')
         })
     })
+
+    $('.filename-changer').on('change', () => {
+        let username = $('#username').val()
+        let type = $('#type').find(":selected").text().split(' ').join('-')
+        let reasons = $('#reasons').val().toString().split(',').join('|')
+        let daterange = $('#date-input').val().toString().split(' - ').join('_')
+        $('#name').val(`${username}_${type}[${reasons}][${daterange}].xlsx`)
+    })
 })
 
 const elements = [
@@ -32,9 +40,6 @@ const elements = [
     { id: 'reasons', value: 'disconnect_reason_code', name: 'disconnect_reason_code', subtext: 'description_eng' }
 ]
 
-function setfilename(filename) {
-    $('#name').val(`${filename}.xlsx`)
-}
 
 function add_options(element, response) {
     const options = []

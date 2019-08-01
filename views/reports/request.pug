@@ -15,13 +15,13 @@ block content
             .form-row
                 .form-group.col-12
                     label(for='type') Type
-                    select.selectpicker.form-control#type(title='Report type' data-actions-box='true' name='type' required)
+                    select.selectpicker.form-control.filename-changer#type(title='Report type' data-actions-box='true' name='type' required)
                         each report in reports
                             option(value=report.id) #{report.name}
             .form-row
                 .form-group.col-12
                     label(for='date-input') Dates
-                    input#date-input.form-control.custom-input(type='text' name='daterange')
+                    input#date-input.form-control.custom-input.filename-changer(type='text' name='daterange')
             //- .form-row
                 .form-group.col-12
                     label(for='bases') Base stations
@@ -37,13 +37,14 @@ block content
             .form-row
                 .form-group.col-12
                     label(for='reasons') Reasons
-                    select.selectpicker.form-control#reasons(multiple title='All reason codes' data-actions-box='true' name='reasons', data-live-search='true')
+                    select.selectpicker.form-control#reasons.filename-changer(multiple title='All reason codes' data-actions-box='true' name='reasons', data-live-search='true')
                         //- each reason in reasons
                             option(value=reason.disconnect_reason_code data-subtext=reason.disconnect_reason_desc) #{reason.disconnect_reason_code}
             .form-row
                 .form-group.col-12
                     label(for='name') Name
                     input.form-control.custom-input#name(type='text' name='name')
+            input.form-control.custom-input#username(type='text' name='username' value=user.username hidden)
             .form-row.mt-4
                 .form-group.col-12
                     button.btn.btn-info.get-button(type='submit' style='width:100%') Get report
