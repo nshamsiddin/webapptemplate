@@ -22,13 +22,13 @@ block content
                 .form-group.col-12
                     label(for='date-input') Dates
                     input#date-input.form-control.custom-input(type='text' name='daterange')
-            .form-row
+            //- .form-row
                 .form-group.col-12
                     label(for='bases') Base stations
                     select.selectpicker.form-control#bases(multiple title='All base stations' data-actions-box='true' name='bases', data-live-search='true')
                         //- each base in bases
                             option(value=base.bs_id) #{base.bs_id}
-            .form-row
+            //- .form-row
                 .form-group.col-12
                     label(for='markets') Markets
                     select.selectpicker.form-control#markets(multiple title='All markets' data-actions-box='true' name='markets')

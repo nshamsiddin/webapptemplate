@@ -27,8 +27,8 @@ $(document).ready(() => {
 })
 
 const elements = [
-    { id: 'bases', value: 'bs_id', name: 'bs_id', subtext: 'region' },
-    { id: 'markets', value: 'market_key', name: 'market_key', subtext: 'region' },
+    // { id: 'bases', value: 'bs_id', name: 'bs_id', subtext: 'region' },
+    // { id: 'markets', value: 'market_key', name: 'market_key', subtext: 'region' },
     { id: 'reasons', value: 'disconnect_reason_code', name: 'disconnect_reason_code', subtext: 'description_eng' }
 ]
 

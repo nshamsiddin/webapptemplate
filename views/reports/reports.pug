@@ -1,17 +1,20 @@
-extends layout
+extends ../layout
 block header
+    link(rel='stylesheet', href='/css/reports.css')
+    script(src='/js/reports.js')
 block content
     a(href='/reports/request')
         button.btn.btn-info.btn-lg.btn-block.mt-3 Request
-    table.table.table-striped.mt-3#reports
+    table.table.table-bordered.table-condensed.table-striped.table-hover.mt-3#reports
         thead.thead-dark
             tr
                 th(scope='col') #
                 th(scope='col') Name
+                th(scope='col') Size
                 th(scope='col') Created
                 th(scope='col') Comment
                 th(scope='col') Status
-        tbody
+        tbody#table-body
             //- each report, i in reports
                 tr(id=report._id)
                     th(scope='row')=i+1

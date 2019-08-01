@@ -9,7 +9,9 @@ const username = config.hive.username
 const password = config.hive.password
 const folder = config.app.folder
 
-let reports_path = path.resolve(__dirname + '/../reports/')
+// let reports_path = path.resolve(__dirname + '/../reports/')
+let reports_path = '/opt/nodejs_apps/reason-codes-web/reports'
+
 
 exports.query = (query, name) => axios
     .post(config.hive.api, { query, url, username, password, filePath: `${reports_path}/${name}` })
