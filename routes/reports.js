@@ -40,7 +40,6 @@ router.post('/request', async (req, res) => {
         })
         hiveinterface.query(query, name)
             .then(response => {
-                console.log(response)
                 if (response && response.status === 200)
                     Report.setStatus(report, 1, 'Success', response.data.comment)
                 else
