@@ -26,7 +26,8 @@ router.get('/request', async (req, res) => {
 })
 
 router.post('/request', async (req, res) => {
-    const { type, name } = req.body
+    const { type,  } = req.body
+    const name = `${req.body.name}.xlsx`
     const reportType = await ReportType.getById(type)
     if (reportType) {
         const query = sqlbuilder.generate_query(reportType, req.body)

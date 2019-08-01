@@ -34,4 +34,4 @@ function create(element, content) {
     return e
 }
 
-const fields = ['filename', 'size', 'requestedAt', 'comment', 'status']
+const fields = ['filename', 'size', 'requestedAt', 'comment']
