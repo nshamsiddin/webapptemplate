@@ -26,15 +26,13 @@ router.get('/request', async (req, res) => {
 })
 
 router.post('/request', async (req, res) => {
-    const { type,  } = req.body
+    const { type } = req.body
     const name = `${req.body.name}.xlsx`
     const reportType = await ReportType.getById(type)
     if (reportType) {
         const query = sqlbuilder.generate_query(reportType, req.body)
         let report = await Report.create({
-            query,
-            size: 0,
-            filename: name,
+            query, size: 0, filename: name,
             report: mongoose.Types.ObjectId(reportType._id),
             author: mongoose.Types.ObjectId(req.user._id)
         })
