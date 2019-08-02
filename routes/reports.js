@@ -13,19 +13,19 @@ const ReportType = require('../controllers/reportTypeController')
 
 const sqlbuilder = require('../modules/sqlbuilder')
 
-router.get('/', async (req, res) => {
+router.get('/', auth.isUser, async (req, res) => {
     // const reports = await Report.getAllByUser(req.user._id)
     const reports = await Report.getAll()
     res.render('reports/reports', { reports })
 
 })
 
-router.get('/request', async (req, res) => {
+router.get('/request', auth.isUser, async (req, res) => {
     const reportsTypes = await ReportType.getAll()
     res.render('reports/request', { reports: reportsTypes })
 })
 
-router.post('/request', async (req, res) => {
+router.post('/request', auth.isUser, async (req, res) => {
     const { type } = req.body
     const name = `${req.body.name}.xlsx`
     const reportType = await ReportType.getById(type)
