@@ -26,6 +26,7 @@ router.get('/request', auth.isUser, async (req, res) => {
 })
 
 router.post('/request', auth.isUser, async (req, res) => {
+    console.log(req.body)
     const { type } = req.body
     const name = `${req.body.name}.xlsx`
     const reportType = await ReportType.getById(type)

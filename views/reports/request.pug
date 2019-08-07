@@ -40,6 +40,13 @@ block content
                     select.selectpicker.form-control#reasons.filename-changer(multiple title='All reason codes' data-actions-box='true' name='reasons' data-selected-text-format="count")
                         //- each reason in reasons
                             option(value=reason.disconnect_reason_code data-subtext=reason.disconnect_reason_desc) #{reason.disconnect_reason_code}
+            .form-row
+                .form-group.col-12
+                    label(for='type') Call type
+                    select.selectpicker.form-control.filename-changer#type(title='Call type by operator' data-actions-box='true' name='call_type' required)
+                        option(value='all') All calls
+                        option(value='b2b') Beeline2Beeline
+
             //- .form-row
                 .form-group.col-12
                     label(for='name') Name

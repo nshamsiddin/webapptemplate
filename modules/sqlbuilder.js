@@ -1,14 +1,28 @@
 const moment = require('moment')
 
 const generate_query = (report, body) => {
-    const { daterange, reasons } = body
+    const { daterange, reasons, call_type } = body
     let result = report.query
     result = result.replaceAll('@PDATE', generate_pdate(daterange))
     result = result.replaceAll('@REASON_CODES', generate_reasons(reasons))
+    result = result.replaceAll('@B2B', generate_bb(call_type))
     return result
 }
 
 exports.generate_query = generate_query
+
+function generate_bb(call_type) {
+    let result
+    switch (call_type) {
+        case 'all':
+            result = '1=1'
+            break
+        case 'b2b':
+            result = `substr(a.called_number, 1, 5) in ('99891', '99890')`
+            break
+    }
+    return result
+}
 
 function generate_pdate(daterange) {
     const from = daterange.split(' - ')[0]
