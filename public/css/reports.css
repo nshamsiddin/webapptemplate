@@ -1,4 +1,15 @@
-tr {
+.clickable {
     cursor:pointer;
 }
     
+.td-icon{
+    width: 100%;
+    max-width:30px;
+    align-self: center;
+    vertical-align: center;
+    vertical-align: center;
+}
+
+.table th, .table td{
+    vertical-align: middle;
+}

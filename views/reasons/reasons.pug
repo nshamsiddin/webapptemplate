@@ -1,0 +1,25 @@
+extends ../layout
+block header
+    link(rel='stylesheet', href='/css/reasons.css')
+    script(src='/js/reasons.js')
+block content
+    table.table.table-bordered.table-condensed.table-striped.table-hover.mt-3.text-center#reports
+        thead.thead-dark
+            tr
+                th(scope='col') Code
+                th(scope='col') disconnect_reason_desc
+                th(scope='col') description_eng
+                th(scope='col') Visible
+        tbody#table-body
+            each reason, i in reasons
+                tr
+                    th(scope='row')=reason.disconnect_reason_code
+                    td=reason.disconnect_reason_desc
+                    td=reason.description_eng
+                    td
+                        .custom-control.custom-checkbox
+                            if (reason.visible)
+                                input.custom-control-input(type='checkbox' id=`${reason._id}` checked)
+                            else
+                                input.custom-control-input(type='checkbox' id=`${reason._id}`)
+                            label.custom-control-label(for=`${reason._id}`)

@@ -18,6 +18,10 @@ exports.create = reason => new Reason(reason)
     .then(() => logger.info('Reason inserted'))
     .catch((err) => logger.error(err.message))
 
+exports.change = (id, check) => Reason.findByIdAndUpdate(id,{ visible: check })
+    .then(() => logger.info('Reason changed'))
+    .catch((err) => logger.error(err.message))
+
 exports.delete = bs_id => Reason.deleteOne({ bs_id })
     .then(() => logger.info('Reason removed'))
     .catch((err) => logger.error(err.message))

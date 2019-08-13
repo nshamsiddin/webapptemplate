@@ -58,6 +58,7 @@ app.use('/api', require('./routes/api'))
 app.use('/', require('./routes/index'))
 app.use('/users', require('./routes/users'))
 app.use('/reports', require('./routes/reports'))
+app.use('/reasons', require('./routes/reasons'))
 
 app.all('*', (req, res) => { res.status(404).render('404') })
 
